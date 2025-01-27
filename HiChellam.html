@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi Chellam?</title>
+    <style>
+        body {
+            font-family: fantasy, sans-serif;
+            text-align: center;
+            background-color: pink;
+            padding: 50px;
+        }
+        #question {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .btn {
+            font-size: 24px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .yes-btn {
+            background-color: green;
+            color: white;
+        }
+        .no-btn {
+            background-color: red;
+            color: white;
+        }
+        #valentine-img {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <img id="teddy" src="teddy.gif" alt="teddy">
+    <div id="question">Will you be my Valentine?</div>
+    <div class="button-container">
+        <button class="btn yes-btn" id="yesBtn" onclick="showLove()">Yes</button>
+        <button class="btn no-btn" id="noBtn" onclick="resizeButtons()">No</button>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+        const noMessages = ["Are you sure?", "Pretty please?", "Pretty please with a cherry on top?", "Pleaseeeeeeee", "No"];
+
+        function showLove() {
+            document.body.innerHTML = '<h1 style="color:red; font-size: 50px;">YAYYYY I LOVE YOU! ❤️</h1>' + 
+                                      '<img src="HappyTeddy.gif" alt="HappyTeddy" style="max-width: 400px; margin-top: 20px;">';
+        }
+
+        function resizeButtons() {
+            let yesBtn = document.getElementById('yesBtn');
+            let noBtn = document.getElementById('noBtn');
+
+            // Increase Yes button size
+            yesBtn.style.fontSize = (parseInt(window.getComputedStyle(yesBtn).fontSize) + 10) + 'px';
+            yesBtn.style.padding = (parseInt(window.getComputedStyle(yesBtn).padding) + 10) + 'px';
+
+            // Change No button text gradually
+            if (noClickCount < noMessages.length) {
+                noBtn.innerText = noMessages[noClickCount];
+                noClickCount++;
+            } else {
+                noBtn.innerText = "No";
+            }
+        }
+    </script>
+</body>
+</html>
